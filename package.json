@@ -1,0 +1,28 @@
+{
+  "name": "folder2flickr",
+  "version": "1.0.0",
+  "description": "Upload photos from folder structure to Flickr",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/akozich/folder2flickr.git"
+  },
+  "keywords": [
+    "flickr",
+    "sync",
+    "upload"
+  ],
+  "author": "Aliaksei Kozich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akozich/folder2flickr/issues"
+  },
+  "homepage": "https://github.com/akozich/folder2flickr#readme",
+  "devDependencies": {
+    "flickr-sdk": "^3.7.0",
+    "electron": "^3.0.0"
+  }
+}
