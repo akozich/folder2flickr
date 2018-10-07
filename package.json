@@ -1,6 +1,6 @@
 {
   "name": "folder2flickr",
-  "productName": "Folder to Flickr",
+  "productName": "Folder2Flickr",
   "version": "1.0.0",
   "description": "Upload photos from folder structure to Flickr",
   "main": "main.js",
