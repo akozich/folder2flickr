@@ -6,13 +6,12 @@ if (require.main !== module) {
 }
 
 const path = require('path')
+const glob = require('glob')
 const { app, BrowserWindow } = require('electron')
-const settings = require('electron-settings')
-const flickrClient = require('./main-process/flickr-client')
 
 const debug = /--debug/.test(process.argv[2])
 
-if (process.mas) app.setName('Electron APIs')
+if (process.mas) app.setName('Folder2Flickr')
 
 let mainWindow = null
 
@@ -20,28 +19,19 @@ function initialize () {
   const shouldQuit = makeSingleInstance()
   if (shouldQuit) return app.quit()
 
+  loadDemos()
+
   function createWindow () {
-    const defaultState = {
-      x: 100,
-      y: 100,
-      width: 800,
-      height: 600
-    }
-    const lastWindowState = settings.get('lastWindowState', defaultState)
-
     const windowOptions = {
-      title: app.getName(),
-      x: lastWindowState.x,
-      y: lastWindowState.y,
-      width: lastWindowState.width,
-      height: lastWindowState.height,
-      minWidth: 600,
-      minHeight: 400
+      width: 1080,
+      minWidth: 680,
+      height: 840,
+      title: app.getName()
     }
 
-    // if (process.platform === 'linux') {
-    //   windowOptions.icon = path.join(__dirname, '/assets/app-icon/png/512.png')
-    // }
+    if (process.platform === 'linux') {
+      windowOptions.icon = path.join(__dirname, '/assets/app-icon/png/512.png')
+    }
 
     mainWindow = new BrowserWindow(windowOptions)
     mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
@@ -65,12 +55,6 @@ function initialize () {
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
       app.quit()
-    }
-  })
-
-  app.on('before-quit', () => {
-    if (mainWindow && !mainWindow.isFullScreen()) {
-      settings.set('lastWindowState', mainWindow.getBounds())
     }
   })
 
@@ -98,10 +82,11 @@ function makeSingleInstance () {
     }
   })
 }
-// initialize()
-flickrClient.login().then(() => {
-  initialize()
-}).catch(err => {
-  console.error(err)
-})
 
+// Require each JS file in the main-process dir
+function loadDemos () {
+  const files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
+  files.forEach((file) => { require(file) })
+}
+
+initialize()
