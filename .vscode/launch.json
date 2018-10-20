@@ -12,9 +12,10 @@
         "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
       },
       "runtimeArgs": [
-        "."
+        ".",
+        "--debug"
       ],
-      "outputCapture": "std" 
+      "outputCapture": "std"
     }
   ]
 }
