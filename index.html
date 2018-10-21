@@ -1,18 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <link rel="import" href="sections/flickr/authorize.html">
+  <link rel="stylesheet" type="text/css" href="node_modules/semantic-ui-css/semantic.min.css">
+
+  <style type="text/css">
+    body {
+      background-color: #E0E0E0;
+    }
+
+    body > .grid {
+      height: 100%;
+    }
+
+    .column {
+      max-width: 650px;
+    }
+
+    .dark-grey {
+      color: #262523;
+    }
+  </style>
 </head>
-
 <body>
-
-  <main class="content js-content"></main>
-
-  <script>
-    require('./assets/imports')
-  </script>
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <h2 class="ui image header dark-grey">
+        <img src="assets/app-icon/png/128.png" class="image">
+        <div class="content">
+          Folder To Flickr
+        </div>
+      </h2>
+      <div class="ui segment">
+        <div class="ui two column very relaxed stackable grid">
+          <div class="column">
+            <div class="ui placeholder">
+              <div class="paragraph">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui placeholder">
+              <div class="paragraph">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui vertical divider dark-grey">
+          and
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/semantic-ui-css/semantic.min.js"></script>
 </body>
-
 </html>
